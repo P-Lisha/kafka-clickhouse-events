@@ -1,0 +1,30 @@
+{
+  "name": "kafka-clickhouse-events",
+  "version": "1.0.0",
+  "description": "Event ingestion service: Kafka queue (V1) + ClickHouse storage (V2)",
+  "main": "src/api/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start:api": "node src/api/server.js",
+    "start:consumer": "node src/consumerWorker.js",
+    "dev:api": "nodemon src/api/server.js",
+    "dev:consumer": "nodemon src/consumerWorker.js",
+    "topics:create": "node src/kafka/admin/createTopics.js",
+    "clickhouse:schema": "node src/clickhouse/applySchema.js",
+    "loadtest": "node scripts/load-test.js",
+    "test": "jest --runInBand"
+  },
+  "dependencies": {
+    "@clickhouse/client": "^1.1.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "kafkajs": "^2.2.4",
+    "prom-client": "^15.1.3",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0"
+  }
+}
